@@ -4,7 +4,12 @@ metadata:
   name: portfolio-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  tls: # 추가!
+  - hosts:
+    - watersu.com
+    secretName: portfolio-tls
   rules:
   - host: watterssu.com
     http:
