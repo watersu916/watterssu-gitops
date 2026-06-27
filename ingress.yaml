@@ -3,13 +3,9 @@ kind: Ingress
 metadata:
   name: portfolio-ingress
   annotations:
-    kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    kubernetes.io/ingress.class: nginx # 기존 방식
 spec:
-  tls: # 추가!
-  - hosts:
-    - watersu.com
-    secretName: portfolio-tls
+  ingressClassName: nginx # 명시적 선언 (이게 중요합니다)
   rules:
   - host: watterssu.com
     http:
