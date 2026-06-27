@@ -9,16 +9,16 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - watterssu.com  
+    - watterssu.com
     secretName: portfolio-tls
   rules:
-  - host: watterssu.com 
+  - host: watterssu.com
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: portfolio-service
+            name: portfolio-service  # 방금 확인한 서비스 이름과 일치!
             port:
-              number: 80
+              number: 80             # 방금 확인한 포트와 일치!
