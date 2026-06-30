@@ -4,9 +4,14 @@ metadata:
   name: watterssu-ingress
   namespace: portfolio
   annotations:
-    kubernetes.io/ingress.class: "traefik"
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
+  tls:
+  - hosts:
+    - watterssu.com
+    secretName: watterssu-tls
   rules:
   - host: watterssu.com
     http:
