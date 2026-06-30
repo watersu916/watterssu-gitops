@@ -5,6 +5,7 @@ metadata:
   namespace: portfolio
   annotations:
     kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
   - host: watterssu.com
@@ -17,10 +18,3 @@ spec:
             name: watterssu-frontend-service
             port:
               number: 80
-      - path: /api
-        pathType: Prefix
-        backend:
-          service:
-            name: watterssu-backend-service
-            port:
-              number: 5001
