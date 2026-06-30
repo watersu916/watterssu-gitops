@@ -4,8 +4,9 @@ metadata:
   name: watterssu-ingress
   namespace: portfolio
   annotations:
+    argocd.argoproj.io/tracking-id: portfolio-app:networking.k8s.io/Ingress:portfolio/watterssu-ingress
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   tls:
@@ -16,10 +17,10 @@ spec:
   - host: watterssu.com
     http:
       paths:
-      - path: /
-        pathType: Prefix
-        backend:
+      - backend:
           service:
             name: watterssu-frontend-service
             port:
               number: 80
+        path: /
+        pathType: Prefix
