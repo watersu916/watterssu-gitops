@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: watersu9/watterssu-frontend:latest
+        image: watersu9/watterssu-frontend:b73f0ab05c03f54bb130d961d63d14b32494382c
         imagePullPolicy: Always
         ports:
         - containerPort: 80
